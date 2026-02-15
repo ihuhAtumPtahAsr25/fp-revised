@@ -1,6 +1,19 @@
+.row {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .container {
     padding: 96px 0;
 }
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -11,6 +24,13 @@ div {
     display: block;
     unicode-bidi: isolate;
 }
+
+.row {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 :root {
     --fa-style-family-classic: "Font Awesome 6 Free";
     --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Free";
@@ -18,10 +38,60 @@ div {
 :host, :root {
     --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Free";
 }
+
 :host, :root {
     --fa-style-family-brands: "Font Awesome 6 Brands";
     --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
 }
+.container {
+    padding: 80px 0;
+
+    .row {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+.services {
+    display: flex;
+    flex-wrap: wrap;
+
+    .service {
+        display: flex;
+        width: calc(100%/3);
+
+        .service__description {
+            display: flex;
+            flex-direction: column;
+
+
+
+            .plans {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .plan {
+                width: calc(100% / 3);
+                display: flex;
+                flex-direction: column;
+            }
+
+            .links {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .link {
+                display: flex;
+                flex-direction: column;
+                width: calc(100%/5);
+                align-items: center;
+            }
+        }
+    }
+}
+
 @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -29,4 +99,10 @@ div {
     font-display: swap;
     src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuSnVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
     unicode-range: U+0460-052F, U+1C80-1C88, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+.footer__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
