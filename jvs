@@ -1,0 +1,78 @@
+ <div class="footer-bottom">
+      <p>Treact Inc. © 2018. All Rights Reserved.</p>
+    </div>
+    <!-- Add this before the closing </body> tag in your HTML -->
+<script src="script.js"></script>
+// script.js
+
+// ========== MOBILE NAV TOGGLE (if you add a hamburger) ==========
+const nav = document.querySelector(".nav-links");
+const navToggle = document.querySelector(".nav-toggle"); // optional hamburger button
+
+if (nav && navToggle) {
+  navToggle.addEventListener("click", () => {
+    nav.classList.toggle("nav-open");
+    navToggle.classList.toggle("open");
+  });
+}
+
+// ========== SMOOTH SCROLLING FOR NAV LINKS ==========
+const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const targetId = link.getAttribute("href");
+    if (!targetId || targetId === "#") return;
+
+    const targetEl = document.querySelector(targetId);
+    if (!targetEl) return;
+
+    e.preventDefault();
+    targetEl.scrollIntoView({ behavior: "smooth" });
+
+    // Close mobile nav after click
+    if (nav && nav.classList.contains("nav-open")) {
+      nav.classList.remove("nav-open");
+      navToggle && navToggle.classList.remove("open");
+    }
+  });
+});
+
+// ========== ACTIVE LINK ON SCROLL (optional) ==========
+const sections = document.querySelectorAll("section[id]");
+
+function onScroll() {
+  const scrollPos = window.scrollY + 120; // offset for navbar height
+
+  sections.forEach((section) => {
+    const top = section.offsetTop;
+    const height = section.offsetHeight;
+    const id = section.getAttribute("id");
+
+    if (scrollPos >= top && scrollPos < top + height) {
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${id}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+  });
+}
+
+window.addEventListener("scroll", onScroll);
+
+// ========== SIMPLE CTA BUTTON HANDLERS ==========
+const primaryButtons = document.querySelectorAll(".primary-btn");
+
+primaryButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    // For now, just scroll to pricing or log something.
+    const pricingSection = document.querySelector(".pricing");
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.log("Primary button clicked");
+    }
+  });
+});
